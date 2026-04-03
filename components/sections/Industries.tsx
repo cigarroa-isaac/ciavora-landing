@@ -13,26 +13,29 @@ const industries = [
   {
     icon: Heart,
     name: "Salud",
-    areas: ["Expediente clínico", "Agendamiento", "Telemedicina"],
+    description: "Sistemas que cumplen regulación y simplifican la operación clínica.",
+    areas: ["Expediente clínico", "Agenda", "Portal de pacientes"],
   },
   {
     icon: Car,
     name: "Automotriz",
-    areas: ["Gestión de inventario", "CRM dealers", "Logística"],
+    description: "Plataformas que conectan toda la cadena, del piso de ventas a postventa.",
+    areas: ["Gestión de inventario", "CRM dealers", "Logística", "Portal de servicios"],
   },
   {
     icon: Briefcase,
     name: "Servicios B2B",
-    areas: ["Portales cliente", "Automatización", "Reporteo"],
+    description: "Software que elimina trabajo manual y da visibilidad en tiempo real.",
+    areas: ["Portales cliente", "Automatización", "Reporteo", "Integraciones"],
   },
 ];
 
 export default function Industries() {
   return (
-    <section id="industrias" className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="industrias" className="py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="text-3xl md:text-5xl font-semibold text-center mb-16 section-heading text-gradient-subtle"
+          className="font-display text-3xl md:text-5xl font-bold text-center mb-16 section-heading text-gradient-subtle"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
@@ -70,9 +73,12 @@ export default function Industries() {
                   className="w-12 h-12 text-primary mb-5"
                   strokeWidth={1.5}
                 />
-                <h3 className="text-2xl font-medium mb-4 text-text-primary">
+                <h3 className="font-display text-2xl font-semibold mb-2 text-text-primary group-hover:text-primary transition-colors duration-300">
                   {industry.name}
                 </h3>
+                <p className="text-text-muted text-xs mb-4 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {industry.description}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {industry.areas.map((area) => (
                     <span

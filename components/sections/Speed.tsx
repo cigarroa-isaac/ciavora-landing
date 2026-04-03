@@ -5,10 +5,10 @@ import { motion, useInView } from "framer-motion";
 import { fadeInUp, defaultTransition, viewportConfig } from "@/lib/animations";
 
 const milestones = [
-  { label: "Descubrimiento" },
-  { label: "Diseño" },
-  { label: "Desarrollo" },
-  { label: "Entrega" },
+  { label: "Descubrimiento", week: "Sem 1" },
+  { label: "Diseño", week: "Sem 2" },
+  { label: "Desarrollo", week: "Sem 2–4" },
+  { label: "Entrega", week: "Sem 4" },
 ];
 
 function AnimatedCounter({
@@ -43,7 +43,7 @@ function AnimatedCounter({
 
 export default function Speed() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
+    <section className="py-32 md:py-40 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Counter */}
         <motion.div
@@ -54,7 +54,7 @@ export default function Speed() {
           variants={fadeInUp}
           transition={defaultTransition}
         >
-          <div className="text-[clamp(5rem,12vw,10rem)] font-semibold leading-none text-gradient tracking-[-0.05em]">
+          <div className="font-display text-[clamp(6rem,15vw,12rem)] font-extrabold leading-none text-gradient tracking-[-0.05em]">
             <AnimatedCounter target={30} />
           </div>
           <p className="text-2xl md:text-3xl font-light text-text-muted mt-3 tracking-[0.1em] uppercase">
@@ -93,8 +93,11 @@ export default function Speed() {
                       ease: [0.22, 1, 0.36, 1],
                     }}
                   />
-                  <span className="text-sm text-text-muted md:mt-1 whitespace-nowrap">
+                  <span className="text-sm font-display font-medium text-text-muted md:mt-1 whitespace-nowrap">
                     {milestone.label}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-wider text-primary/50 md:mt-0.5">
+                    {milestone.week}
                   </span>
                 </div>
               </div>

@@ -30,3 +30,33 @@ export const defaultTransition: Transition = {
 };
 
 export const viewportConfig = { once: true, margin: "-100px" } as const;
+
+/* Additional variants for premium feel */
+export const slideInLeft: Variants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0 },
+};
+
+export const slideInRight: Variants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0 },
+};
+
+export const lineGrow: Variants = {
+  hidden: { scaleX: 0 },
+  visible: { scaleX: 1 },
+};
+
+export const slowTransition: Transition = {
+  duration: 1,
+  ease: [0.22, 1, 0.36, 1],
+};
+
+export const staggerContainerSlow: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};

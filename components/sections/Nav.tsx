@@ -30,7 +30,7 @@ export default function Nav() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="text-lg font-semibold tracking-[0.08em] text-text-primary">
+        <a href="#" className="font-display text-lg font-bold tracking-[0.12em] text-text-primary">
           CIAVORA
         </a>
 
@@ -40,7 +40,7 @@ export default function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-text-muted hover:text-text-primary transition-colors"
+              className="hover-line text-[13px] uppercase tracking-[0.06em] text-text-muted hover:text-text-primary transition-colors"
             >
               {link.label}
             </a>

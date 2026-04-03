@@ -39,9 +39,9 @@ export default function Process() {
   });
 
   return (
-    <section id="proceso" className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="proceso" className="py-32 md:py-40 px-4 sm:px-6 lg:px-8">
       <motion.h2
-        className="text-3xl md:text-5xl font-semibold text-center mb-20 section-heading text-gradient-subtle"
+        className="font-display text-3xl md:text-5xl font-bold text-center mb-4 section-heading text-gradient-subtle"
         initial="hidden"
         whileInView="visible"
         viewport={viewportConfig}
@@ -50,6 +50,17 @@ export default function Process() {
       >
         Así trabajamos
       </motion.h2>
+
+      <motion.p
+        className="text-text-muted text-center text-sm mb-20 max-w-md mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportConfig}
+        variants={fadeInUp}
+        transition={{ ...defaultTransition, delay: 0.1 }}
+      >
+        Cuatro pasos. Cero sorpresas. Transparencia total de principio a fin.
+      </motion.p>
 
       <div ref={containerRef} className="relative max-w-3xl mx-auto">
         {/* Background line */}
@@ -91,7 +102,7 @@ export default function Process() {
                   <span className="text-sm font-mono text-primary/70">
                     {step.number}
                   </span>
-                  <h3 className="text-xl font-medium text-text-primary mt-1">
+                  <h3 className="font-display text-xl font-semibold text-text-primary mt-1">
                     {step.title}
                   </h3>
                   <p className="text-text-muted text-sm leading-relaxed mt-2">

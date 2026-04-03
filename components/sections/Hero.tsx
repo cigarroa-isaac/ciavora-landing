@@ -8,7 +8,15 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden noise-overlay">
       {/* Animated grid background */}
-      <div className="hero-grid-bg absolute inset-0" />
+      <div className="hero-grid-bg absolute inset-0 opacity-50" />
+
+      {/* Large background watermark */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[18vw] font-extrabold leading-none text-white/[0.02] select-none pointer-events-none tracking-tighter whitespace-nowrap"
+        aria-hidden="true"
+      >
+        CIAVORA
+      </div>
 
       {/* Radial gradient overlay */}
       <div
@@ -42,7 +50,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          className="text-gradient heading-glow text-[clamp(2.75rem,7vw,5.5rem)] font-semibold leading-[1.05] tracking-[-0.04em]"
+          className="font-display text-gradient heading-glow text-[clamp(3rem,7.5vw,6rem)] font-bold leading-[1.05] tracking-[-0.04em]"
           variants={fadeInUp}
           transition={defaultTransition}
         >
