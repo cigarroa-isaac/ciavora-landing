@@ -29,12 +29,10 @@ export default function Nav() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo */}
         <a href="#" className="font-display text-lg font-bold tracking-[0.12em] text-text-primary">
           CIAVORA
         </a>
 
-        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <a
@@ -47,7 +45,6 @@ export default function Nav() {
           ))}
         </div>
 
-        {/* Desktop CTA */}
         <a
           href="#contacto"
           className="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(124,58,237,0.25)] hover:shadow-[0_0_30px_rgba(124,58,237,0.4)]"
@@ -55,7 +52,6 @@ export default function Nav() {
           Hablemos
         </a>
 
-        {/* Mobile hamburger */}
         <button
           className="md:hidden text-text-primary"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -66,7 +62,6 @@ export default function Nav() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div

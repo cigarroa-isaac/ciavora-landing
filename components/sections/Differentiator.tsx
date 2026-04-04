@@ -23,8 +23,8 @@ export default function Differentiator() {
         </span>
 
         <blockquote className="relative z-10">
-          <p className="font-display text-2xl md:text-4xl font-medium leading-snug text-text-primary italic">
-            El cliente no sabe lo que quiere hasta que lo tiene.
+          <p className="font-display text-2xl md:text-4xl font-medium leading-snug text-text-primary italic heading-glow">
+            No tienes que llegar con la respuesta. Llegas con el reto, y juntos construimos la solución.
           </p>
         </blockquote>
 

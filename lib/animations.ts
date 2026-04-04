@@ -60,3 +60,24 @@ export const staggerContainerSlow: Variants = {
     },
   },
 };
+
+/* Premium animation variants */
+export const blurIn: Variants = {
+  hidden: { opacity: 0, filter: "blur(12px)", y: 20 },
+  visible: { opacity: 1, filter: "blur(0px)", y: 0 },
+};
+
+export const scaleRotateIn: Variants = {
+  hidden: { opacity: 0, scale: 0.92, rotate: -2 },
+  visible: { opacity: 1, scale: 1, rotate: 0 },
+};
+
+export const clipRevealLeft: Variants = {
+  hidden: { clipPath: "inset(0 100% 0 0)" },
+  visible: { clipPath: "inset(0 0% 0 0)" },
+};
+
+export const cinematicTransition: Transition = {
+  duration: 0.9,
+  ease: [0.22, 1, 0.36, 1],
+};

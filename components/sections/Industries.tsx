@@ -35,7 +35,7 @@ export default function Industries() {
     <section id="industrias" className="py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="font-display text-3xl md:text-5xl font-bold text-center mb-16 section-heading text-gradient-subtle"
+          className="font-display text-3xl md:text-5xl font-bold text-center mb-4 section-heading text-gradient-subtle"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
@@ -44,6 +44,17 @@ export default function Industries() {
         >
           Industrias que ya transformamos
         </motion.h2>
+
+        <motion.div
+          className="flex justify-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={fadeInUp}
+          transition={{ ...defaultTransition, delay: 0.1 }}
+        >
+          <div className="w-16 accent-gradient" />
+        </motion.div>
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -55,40 +66,29 @@ export default function Industries() {
           {industries.map((industry) => (
             <motion.div
               key={industry.name}
-              className="group relative bg-white/[0.03] border border-white/[0.08] rounded-2xl p-8 overflow-hidden transition-all"
+              className="card-lift group bg-white/[0.04] border border-white/[0.1] rounded-2xl p-8 hover:bg-white/[0.07] hover:border-primary/30"
               variants={fadeInUp}
               transition={defaultTransition}
             >
-              {/* Hover glow */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(circle at center, rgba(124,58,237,0.15) 0%, transparent 70%)",
-                }}
+              <industry.icon
+                className="w-12 h-12 text-primary mb-5"
+                strokeWidth={1.5}
               />
-
-              <div className="relative z-10">
-                <industry.icon
-                  className="w-12 h-12 text-primary mb-5"
-                  strokeWidth={1.5}
-                />
-                <h3 className="font-display text-2xl font-semibold mb-2 text-text-primary group-hover:text-primary transition-colors duration-300">
-                  {industry.name}
-                </h3>
-                <p className="text-text-muted text-xs mb-4 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {industry.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {industry.areas.map((area) => (
-                    <span
-                      key={area}
-                      className="text-xs px-3 py-1 rounded-full bg-white/[0.06] text-text-muted border border-white/[0.08]"
-                    >
-                      {area}
-                    </span>
-                  ))}
-                </div>
+              <h3 className="font-display text-2xl font-semibold mb-2 text-text-primary group-hover:text-primary transition-colors duration-300">
+                {industry.name}
+              </h3>
+              <p className="text-text-muted text-xs mb-4 leading-relaxed">
+                {industry.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {industry.areas.map((area) => (
+                  <span
+                    key={area}
+                    className="text-xs px-3 py-1 rounded-full bg-white/[0.06] text-text-muted border border-white/[0.08] transition-colors duration-300 group-hover:border-secondary/20"
+                  >
+                    {area}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}

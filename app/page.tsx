@@ -1,3 +1,4 @@
+import CustomCursor from "@/components/CustomCursor";
 import Nav from "@/components/sections/Nav";
 import Hero from "@/components/sections/Hero";
 import ValueProposition from "@/components/sections/ValueProposition";
@@ -12,14 +13,19 @@ import Footer from "@/components/sections/Footer";
 export default function Home() {
   return (
     <main className="grain-global">
+      <CustomCursor />
       <Nav />
       <Hero />
       <ValueProposition />
+      <div className="max-w-7xl mx-auto h-px bg-white/[0.04]" />
       <Differentiator />
+      <div className="max-w-7xl mx-auto h-px bg-white/[0.04]" />
       <Speed />
       <Industries />
+      <div className="max-w-7xl mx-auto h-px bg-white/[0.04]" />
       <Process />
       <Tech />
+      <div className="max-w-7xl mx-auto h-px bg-white/[0.04]" />
       <CtaFinal />
       <Footer />
     </main>

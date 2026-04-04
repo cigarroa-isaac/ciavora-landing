@@ -2,15 +2,14 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
+import { fadeInUp, blurIn, staggerContainer, defaultTransition, cinematicTransition } from "@/lib/animations";
+import HeroMockup from "@/components/HeroMockup";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden noise-overlay">
-      {/* Animated grid background */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden noise-overlay pt-24 pb-12">
       <div className="hero-grid-bg absolute inset-0 opacity-50" />
 
-      {/* Large background watermark */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[18vw] font-extrabold leading-none text-white/[0.02] select-none pointer-events-none tracking-tighter whitespace-nowrap"
         aria-hidden="true"
@@ -18,28 +17,16 @@ export default function Hero() {
         CIAVORA
       </div>
 
-      {/* Radial gradient overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 50% at 50% 30%, rgba(124,58,237,0.18) 0%, rgba(6,182,212,0.06) 40%, transparent 70%)",
-        }}
-      />
+      <div className="hero-gradient-animated absolute inset-0 pointer-events-none" />
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-
-      {/* Content */}
       <motion.div
         className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
       >
-        {/* Badge */}
         <motion.div
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] mb-8"
+          className="shimmer inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] mb-8"
           variants={fadeInUp}
           transition={defaultTransition}
         >
@@ -51,8 +38,8 @@ export default function Hero() {
 
         <motion.h1
           className="font-display text-gradient heading-glow text-[clamp(3rem,7.5vw,6rem)] font-bold leading-[1.05] tracking-[-0.04em]"
-          variants={fadeInUp}
-          transition={defaultTransition}
+          variants={blurIn}
+          transition={cinematicTransition}
         >
           Tu operación en digital.
           <br />
@@ -75,7 +62,7 @@ export default function Hero() {
         >
           <a
             href="#contacto"
-            className="group relative px-8 py-3.5 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all text-sm overflow-hidden shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.5)]"
+            className="btn-press group relative px-8 py-3.5 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all text-sm overflow-hidden shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.5)]"
           >
             Platícanos tu reto
           </a>
@@ -87,7 +74,13 @@ export default function Hero() {
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>
+
+        {/* Animated dashboard mockup */}
+        <HeroMockup />
       </motion.div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 }

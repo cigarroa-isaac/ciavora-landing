@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { Lightbulb, Zap, Users } from "lucide-react";
 import {
   fadeInUp,
-  staggerContainer,
+  scaleRotateIn,
+  staggerContainerSlow,
   defaultTransition,
   viewportConfig,
 } from "@/lib/animations";
@@ -15,7 +16,7 @@ const cards = [
     number: "01",
     title: "Entendemos antes que otros",
     description:
-      "Nos sumergimos en tu operación antes de escribir una sola línea de código. Eso nos permite proponer soluciones que realmente resuelven, no parches genéricos.",
+      "Mapeamos cómo opera tu negocio hoy — no cómo crees que opera. Eso nos permite construir el sistema que realmente necesitas, no el que sonaba bien en la primera reunión.",
   },
   {
     icon: Zap,
@@ -38,7 +39,7 @@ export default function ValueProposition() {
     <section id="servicios" className="py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="font-display text-3xl md:text-5xl font-bold text-center mb-16 section-heading text-gradient-subtle"
+          className="font-display text-3xl md:text-5xl font-bold text-center mb-4 section-heading text-gradient-subtle"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
@@ -49,19 +50,28 @@ export default function ValueProposition() {
         </motion.h2>
 
         <motion.div
+          className="flex justify-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={fadeInUp}
+          transition={{ ...defaultTransition, delay: 0.1 }}
+        >
+          <div className="w-16 accent-gradient" />
+        </motion.div>
+
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          variants={staggerContainer}
+          variants={staggerContainerSlow}
         >
-          {cards.map((card, i) => (
+          {cards.map((card) => (
             <motion.div
               key={card.title}
-              className={`group bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-2xl p-8 transition-all hover:bg-white/[0.05] hover:border-primary/20 ${
-                i === 0 ? "md:col-span-2 lg:col-span-1 lg:row-span-1" : ""
-              }`}
-              variants={fadeInUp}
+              className="card-lift group bg-white/[0.04] border border-white/[0.1] rounded-2xl p-8 hover:bg-white/[0.07] hover:border-primary/30"
+              variants={scaleRotateIn}
               transition={defaultTransition}
             >
               <div className="flex items-center justify-between mb-5">

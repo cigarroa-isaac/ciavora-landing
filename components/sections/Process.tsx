@@ -39,7 +39,7 @@ export default function Process() {
   });
 
   return (
-    <section id="proceso" className="py-32 md:py-40 px-4 sm:px-6 lg:px-8">
+    <section id="proceso" className="relative py-32 md:py-40 px-4 sm:px-6 lg:px-8">
       <motion.h2
         className="font-display text-3xl md:text-5xl font-bold text-center mb-4 section-heading text-gradient-subtle"
         initial="hidden"
@@ -93,7 +93,7 @@ export default function Process() {
               >
                 {/* Dot on the line */}
                 <div
-                  className={`absolute left-[11px] md:left-1/2 md:-translate-x-1/2 top-1 w-2 h-2 rounded-full bg-primary ring-4 ring-background z-10`}
+                  className={`absolute left-[11px] md:left-1/2 md:-translate-x-1/2 top-1 w-2 h-2 rounded-full bg-primary ring-4 ring-background z-10 dot-pulse`}
                 />
 
                 {/* Content - left side on desktop for even, right side for odd */}
