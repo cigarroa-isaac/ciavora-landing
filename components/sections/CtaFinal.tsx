@@ -21,15 +21,18 @@ export default function CtaFinal() {
     setStatus("sending");
 
     try {
-      const params = new URLSearchParams({
+      const body = new URLSearchParams({
         name: name.trim(),
         email: email.trim(),
         message: message.trim(),
       });
 
-      await fetch(`${SHEET_URL}?${params.toString()}`, {
-        method: "GET",
+      await fetch(SHEET_URL, {
+        method: "POST",
         mode: "no-cors",
+        redirect: "manual",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
       });
 
       setStatus("sent");
