@@ -30,9 +30,12 @@ export default function CtaFinal() {
       await fetch(SHEET_URL, {
         method: "POST",
         mode: "no-cors",
-        redirect: "manual",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
+      }).catch(() => {
+        // Google redirects to googleusercontent.com after processing.
+        // CSP may block the redirect, but the POST data already reached
+        // the Apps Script before the redirect — so this error is safe to ignore.
       });
 
       setStatus("sent");
