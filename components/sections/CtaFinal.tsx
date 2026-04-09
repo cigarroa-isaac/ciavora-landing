@@ -12,11 +12,20 @@ export default function CtaFinal() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [validation, setValidation] = useState("");
 
   const handleSubmit = async () => {
     if (status === "sending" || status === "sent") return;
-    if (!name.trim() || !email.trim() || !message.trim()) return;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    setValidation("");
+
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setValidation("Todos los campos son obligatorios.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setValidation("Ingresa un correo electrónico válido.");
+      return;
+    }
 
     setStatus("sending");
 
@@ -156,6 +165,10 @@ export default function CtaFinal() {
                     className="input-premium w-full bg-white/[0.05] border border-white/[0.1] rounded-lg px-4 py-3 text-text-primary placeholder:text-text-muted/50 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none"
                   />
                 </div>
+
+                {validation && (
+                  <p className="text-red-400 text-sm">{validation}</p>
+                )}
 
                 <button
                   type="button"
