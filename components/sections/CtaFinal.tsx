@@ -21,18 +21,17 @@ export default function CtaFinal() {
     setStatus("sending");
 
     try {
-      const body = `name=${encodeURIComponent(name.trim())}&email=${encodeURIComponent(email.trim())}&message=${encodeURIComponent(message.trim())}`;
-
-      await fetch(SHEET_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body,
+      const params = new URLSearchParams({
+        name: name.trim(),
+        email: email.trim(),
+        message: message.trim(),
       });
 
-      // With no-cors we can't read the response, but the request goes through
+      await fetch(`${SHEET_URL}?${params.toString()}`, {
+        method: "GET",
+        mode: "no-cors",
+      });
+
       setStatus("sent");
       setName("");
       setEmail("");
