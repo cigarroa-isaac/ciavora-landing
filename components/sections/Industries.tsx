@@ -51,7 +51,7 @@ export default function Industries() {
             const Icon = icons[i];
             return (
               <motion.div
-                key={industry.name}
+                key={i}
                 className="card-lift group bg-white/[0.04] border border-white/[0.1] rounded-2xl p-8 hover:bg-white/[0.07] hover:border-primary/30"
                 variants={fadeInUp}
                 transition={defaultTransition}
@@ -67,9 +67,9 @@ export default function Industries() {
                   {industry.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {industry.areas.map((area) => (
+                  {industry.areas.map((area, j) => (
                     <span
-                      key={area}
+                      key={j}
                       className="text-xs px-3 py-1 rounded-full bg-white/[0.06] text-text-muted border border-white/[0.08] transition-colors duration-300 group-hover:border-secondary/20"
                     >
                       {area}

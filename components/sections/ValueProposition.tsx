@@ -53,7 +53,7 @@ export default function ValueProposition() {
             const Icon = icons[i];
             return (
               <motion.div
-                key={card.title}
+                key={i}
                 className="card-lift group bg-white/[0.04] border border-white/[0.1] rounded-2xl p-8 hover:bg-white/[0.07] hover:border-primary/30"
                 variants={scaleRotateIn}
                 transition={defaultTransition}

@@ -137,7 +137,7 @@ export default function Speed() {
         >
           {t.speed.milestones.map((milestone, i) => (
             <div
-              key={milestone.label}
+              key={i}
               className="flex items-center md:flex-1 w-full"
             >
               <div className="flex flex-col items-center md:items-center">
