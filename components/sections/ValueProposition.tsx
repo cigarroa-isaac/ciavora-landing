@@ -9,32 +9,14 @@ import {
   defaultTransition,
   viewportConfig,
 } from "@/lib/animations";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
-const cards = [
-  {
-    icon: Lightbulb,
-    number: "01",
-    title: "Entendemos antes que otros",
-    description:
-      "Mapeamos cómo opera tu negocio hoy — no cómo crees que opera. Eso nos permite construir el sistema que realmente necesitas, no el que sonaba bien en la primera reunión.",
-  },
-  {
-    icon: Zap,
-    number: "02",
-    title: "Semanas, no meses",
-    description:
-      "Nuestro proceso está diseñado para entregar valor rápido. Prototipamos, validamos y construimos en ciclos cortos para que veas resultados desde el día uno.",
-  },
-  {
-    icon: Users,
-    number: "03",
-    title: "Tú al negocio, nosotros al sistema",
-    description:
-      "No te pedimos que aprendas tecnología. Nosotros traducimos tu visión en software funcional mientras tú te enfocas en lo que mejor sabes hacer.",
-  },
-];
+const icons = [Lightbulb, Zap, Users];
+const numbers = ["01", "02", "03"];
 
 export default function ValueProposition() {
+  const t = useT();
+
   return (
     <section id="servicios" className="py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -46,7 +28,7 @@ export default function ValueProposition() {
           variants={fadeInUp}
           transition={defaultTransition}
         >
-          Lo que nos hace diferentes
+          {t.valueProp.heading}
         </motion.h2>
 
         <motion.div
@@ -67,27 +49,30 @@ export default function ValueProposition() {
           viewport={viewportConfig}
           variants={staggerContainerSlow}
         >
-          {cards.map((card) => (
-            <motion.div
-              key={card.title}
-              className="card-lift group bg-white/[0.04] border border-white/[0.1] rounded-2xl p-8 hover:bg-white/[0.07] hover:border-primary/30"
-              variants={scaleRotateIn}
-              transition={defaultTransition}
-            >
-              <div className="flex items-center justify-between mb-5">
-                <card.icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
-                <span className="font-display text-xs text-primary/40 font-semibold tracking-wider">
-                  {card.number}
-                </span>
-              </div>
-              <h3 className="font-display text-xl font-semibold mb-3 text-text-primary group-hover:text-primary transition-colors duration-300">
-                {card.title}
-              </h3>
-              <p className="text-text-muted text-sm leading-relaxed">
-                {card.description}
-              </p>
-            </motion.div>
-          ))}
+          {t.valueProp.cards.map((card, i) => {
+            const Icon = icons[i];
+            return (
+              <motion.div
+                key={card.title}
+                className="card-lift group bg-white/[0.04] border border-white/[0.1] rounded-2xl p-8 hover:bg-white/[0.07] hover:border-primary/30"
+                variants={scaleRotateIn}
+                transition={defaultTransition}
+              >
+                <div className="flex items-center justify-between mb-5">
+                  <Icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
+                  <span className="font-display text-xs text-primary/40 font-semibold tracking-wider">
+                    {numbers[i]}
+                  </span>
+                </div>
+                <h3 className="font-display text-xl font-semibold mb-3 text-text-primary group-hover:text-primary transition-colors duration-300">
+                  {card.title}
+                </h3>
+                <p className="text-text-muted text-sm leading-relaxed">
+                  {card.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

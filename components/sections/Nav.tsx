@@ -3,14 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
-const links = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Industrias", href: "#industrias" },
-];
+import { useT } from "@/lib/i18n/LocaleProvider";
+import LocaleToggle from "@/components/ui/LocaleToggle";
 
 export default function Nav() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -19,6 +16,12 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const links = [
+    { label: t.nav.links.servicios, href: "#servicios" },
+    { label: t.nav.links.proceso, href: "#proceso" },
+    { label: t.nav.links.industrias, href: "#industrias" },
+  ];
 
   return (
     <header
@@ -45,17 +48,20 @@ export default function Nav() {
           ))}
         </div>
 
-        <a
-          href="#contacto"
-          className="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(124,58,237,0.25)] hover:shadow-[0_0_30px_rgba(124,58,237,0.4)]"
-        >
-          Hablemos
-        </a>
+        <div className="hidden md:flex items-center gap-5">
+          <LocaleToggle />
+          <a
+            href="#contacto"
+            className="inline-flex items-center px-5 py-2 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(124,58,237,0.25)] hover:shadow-[0_0_30px_rgba(124,58,237,0.4)]"
+          >
+            {t.nav.cta}
+          </a>
+        </div>
 
         <button
           className="md:hidden text-text-primary"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={mobileOpen ? t.nav.menuClose : t.nav.menuOpen}
           aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -82,12 +88,20 @@ export default function Nav() {
                   {link.label}
                 </a>
               ))}
+
+              <div className="pt-4 mt-2 border-t border-white/[0.06] flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-text-muted/60">
+                  {t.nav.localeAria}
+                </span>
+                <LocaleToggle />
+              </div>
+
               <a
                 href="#contacto"
                 className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors mt-2"
                 onClick={() => setMobileOpen(false)}
               >
-                Hablemos
+                {t.nav.cta}
               </a>
             </div>
           </motion.div>

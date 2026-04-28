@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { fadeInScale, defaultTransition, viewportConfig } from "@/lib/animations";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export default function Differentiator() {
+  const t = useT();
+
   return (
     <section className="bg-surface py-32 md:py-40 px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -14,7 +17,6 @@ export default function Differentiator() {
         variants={fadeInScale}
         transition={{ ...defaultTransition, duration: 0.8 }}
       >
-        {/* Decorative quotes */}
         <span
           className="absolute -top-8 left-1/2 -translate-x-1/2 text-[8rem] leading-none font-serif text-primary/[0.08] select-none pointer-events-none"
           aria-hidden="true"
@@ -24,15 +26,12 @@ export default function Differentiator() {
 
         <blockquote className="relative z-10">
           <p className="font-display text-2xl md:text-4xl font-medium leading-snug text-text-primary italic heading-glow">
-            No tienes que llegar con la respuesta. Llegas con el reto, y juntos construimos la solución.
+            {t.differentiator.quote}
           </p>
         </blockquote>
 
         <p className="mt-8 text-text-muted max-w-xl mx-auto leading-relaxed">
-          Por eso no te pedimos un documento de 80 páginas. Escuchamos tu
-          problema, proponemos una solución concreta, y te mostramos un
-          prototipo funcional en días — no en meses. Iteramos juntos hasta que
-          dices: &ldquo;esto es exactamente lo que necesitaba&rdquo;.
+          {t.differentiator.body}
         </p>
       </motion.div>
     </section>

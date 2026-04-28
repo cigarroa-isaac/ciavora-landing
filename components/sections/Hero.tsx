@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { fadeInUp, blurIn, staggerContainer, defaultTransition, cinematicTransition } from "@/lib/animations";
 import HeroMockup from "@/components/HeroMockup";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export default function Hero() {
+  const t = useT();
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden noise-overlay pt-24 pb-12">
       <div className="hero-grid-bg absolute inset-0 opacity-50" />
@@ -32,7 +35,7 @@ export default function Hero() {
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-xs text-text-muted tracking-wide uppercase">
-            Desarrollo de software a medida
+            {t.hero.eyebrow}
           </span>
         </motion.div>
 
@@ -41,9 +44,9 @@ export default function Hero() {
           variants={blurIn}
           transition={cinematicTransition}
         >
-          Tu operación en digital.
+          {t.hero.titleLine1}
           <br />
-          En semanas, no años.
+          {t.hero.titleLine2}
         </motion.h1>
 
         <motion.p
@@ -51,8 +54,7 @@ export default function Hero() {
           variants={fadeInUp}
           transition={{ ...defaultTransition, delay: 0.1 }}
         >
-          Construimos el sistema exacto que tu negocio necesita — porque
-          conocemos tu industria antes de escribir la primera línea de código.
+          {t.hero.subtitle}
         </motion.p>
 
         <motion.div
@@ -64,13 +66,13 @@ export default function Hero() {
             href="#contacto"
             className="btn-press group relative px-8 py-3.5 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all text-sm overflow-hidden shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.5)]"
           >
-            Platícanos tu reto
+            {t.hero.ctaPrimary}
           </a>
           <a
             href="#proceso"
             className="group flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/[0.1] text-text-primary hover:bg-white/[0.05] hover:border-white/[0.15] transition-all text-sm"
           >
-            Ver cómo trabajamos
+            {t.hero.ctaSecondary}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>

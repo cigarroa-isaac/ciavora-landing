@@ -3,19 +3,9 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { fadeInUp, defaultTransition, viewportConfig } from "@/lib/animations";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
-const milestones = [
-  { label: "Descubrimiento", week: "Sem 1" },
-  { label: "Diseño", week: "Sem 2" },
-  { label: "Desarrollo", week: "Sem 2–4" },
-  { label: "Entrega", week: "Sem 4" },
-];
-
-const metrics = [
-  { target: 30, label: "días", description: "de idea a producción" },
-  { target: 4, label: "sprints", description: "de entrega continua" },
-  { target: 1, label: "semana", description: "para el primer prototipo" },
-];
+const TARGETS = [30, 4, 1];
 
 function useAnimatedCount(target: number, duration: number, active: boolean) {
   const [count, setCount] = useState(0);
@@ -40,45 +30,43 @@ function useAnimatedCount(target: number, duration: number, active: boolean) {
 }
 
 function RotatingCounter() {
+  const t = useT();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
   const [activeIndex, setActiveIndex] = useState(0);
   const [counting, setCounting] = useState(false);
 
+  const target = TARGETS[activeIndex];
   const count = useAnimatedCount(
-    metrics[activeIndex].target,
-    metrics[activeIndex].target > 10 ? 2500 : 1500,
+    target,
+    target > 10 ? 2500 : 1500,
     counting
   );
 
-  // Start counting when in view
   useEffect(() => {
     if (isInView) setCounting(true);
   }, [isInView]);
 
-  // Rotate metrics
   useEffect(() => {
     if (!isInView) return;
     const interval = setInterval(() => {
       setCounting(false);
       setTimeout(() => {
-        setActiveIndex((prev) => (prev + 1) % metrics.length);
+        setActiveIndex((prev) => (prev + 1) % TARGETS.length);
         setCounting(true);
       }, 400);
     }, 4000);
     return () => clearInterval(interval);
   }, [isInView]);
 
-  const metric = metrics[activeIndex];
+  const metric = t.speed.metrics[activeIndex];
 
   return (
     <div ref={ref} className="text-center mb-20">
-      {/* Number */}
       <div className="font-display text-[clamp(6rem,15vw,12rem)] font-extrabold leading-none text-gradient tracking-[-0.05em] glow-pulse">
         {count}
       </div>
 
-      {/* Label + description with crossfade */}
       <div className="relative h-16 flex flex-col items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.div
@@ -99,9 +87,8 @@ function RotatingCounter() {
         </AnimatePresence>
       </div>
 
-      {/* Dots indicator */}
       <div className="flex justify-center gap-2 mt-6">
-        {metrics.map((_, i) => (
+        {TARGETS.map((_, i) => (
           <button
             key={i}
             onClick={() => {
@@ -116,7 +103,7 @@ function RotatingCounter() {
                 ? "bg-primary w-6"
                 : "bg-white/[0.15] hover:bg-white/[0.25]"
             }`}
-            aria-label={`Métrica ${i + 1}`}
+            aria-label={`${t.speed.metricAria} ${i + 1}`}
           />
         ))}
       </div>
@@ -125,6 +112,8 @@ function RotatingCounter() {
 }
 
 export default function Speed() {
+  const t = useT();
+
   return (
     <section className="py-32 md:py-40 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
@@ -138,7 +127,6 @@ export default function Speed() {
           <RotatingCounter />
         </motion.div>
 
-        {/* Timeline */}
         <motion.div
           className="flex flex-col md:flex-row items-start md:items-center gap-0"
           initial="hidden"
@@ -147,7 +135,7 @@ export default function Speed() {
           variants={fadeInUp}
           transition={defaultTransition}
         >
-          {milestones.map((milestone, i) => (
+          {t.speed.milestones.map((milestone, i) => (
             <div
               key={milestone.label}
               className="flex items-center md:flex-1 w-full"
@@ -174,7 +162,7 @@ export default function Speed() {
                 </div>
               </div>
 
-              {i < milestones.length - 1 && (
+              {i < t.speed.milestones.length - 1 && (
                 <>
                   <motion.div
                     className="hidden md:block flex-1 h-0.5 bg-primary/30 mx-2 origin-left"

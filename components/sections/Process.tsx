@@ -3,35 +3,12 @@
 import { useRef } from "react";
 import { motion, useScroll } from "framer-motion";
 import { fadeInUp, defaultTransition, viewportConfig } from "@/lib/animations";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
-const steps = [
-  {
-    number: "01",
-    title: "Escuchamos",
-    description:
-      "Nos reunimos contigo para entender tu operación, tus dolores y tus objetivos. Sin jerga técnica, sin formularios eternos. Una conversación honesta.",
-  },
-  {
-    number: "02",
-    title: "Proponemos",
-    description:
-      "Diseñamos una solución a medida con alcance claro, tiempos realistas y presupuesto transparente. Sabes exactamente qué vas a recibir y cuándo.",
-  },
-  {
-    number: "03",
-    title: "Construimos rápido",
-    description:
-      "Desarrollamos en ciclos cortos con entregables visibles cada semana. Puedes tocar, probar y dar feedback desde el primer sprint.",
-  },
-  {
-    number: "04",
-    title: "Evolucionamos",
-    description:
-      "Después del lanzamiento seguimos contigo. Medimos resultados, optimizamos y escalamos tu sistema conforme crece tu negocio.",
-  },
-];
+const numbers = ["01", "02", "03", "04"];
 
 export default function Process() {
+  const t = useT();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -48,7 +25,7 @@ export default function Process() {
         variants={fadeInUp}
         transition={defaultTransition}
       >
-        Así trabajamos
+        {t.process.heading}
       </motion.h2>
 
       <motion.p
@@ -59,28 +36,24 @@ export default function Process() {
         variants={fadeInUp}
         transition={{ ...defaultTransition, delay: 0.1 }}
       >
-        Cuatro pasos. Cero sorpresas. Transparencia total de principio a fin.
+        {t.process.subheading}
       </motion.p>
 
       <div ref={containerRef} className="relative max-w-3xl mx-auto">
-        {/* Background line */}
         <div className="absolute left-[15px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-white/[0.08]" />
 
-        {/* Animated fill line */}
         <motion.div
           className="absolute left-[15px] md:left-1/2 md:-translate-x-px top-0 w-0.5 bg-primary origin-top"
           style={{ scaleY: scrollYProgress, height: "100%" }}
         />
 
-        {/* Steps */}
         <div className="relative space-y-16 md:space-y-20">
-          {steps.map((step, i) => {
+          {t.process.steps.map((step, i) => {
             const isEven = i % 2 === 0;
             return (
               <motion.div
-                key={step.number}
+                key={numbers[i]}
                 className={`relative flex items-start gap-8 ${
-                  // On desktop, alternate sides
                   isEven
                     ? "md:flex-row md:text-right"
                     : "md:flex-row-reverse md:text-left"
@@ -91,16 +64,14 @@ export default function Process() {
                 variants={fadeInUp}
                 transition={{ ...defaultTransition, delay: i * 0.05 }}
               >
-                {/* Dot on the line */}
                 <div
                   className={`absolute left-[11px] md:left-1/2 md:-translate-x-1/2 top-1 w-2 h-2 rounded-full bg-primary ring-4 ring-background z-10 dot-pulse`}
                 />
 
-                {/* Content - left side on desktop for even, right side for odd */}
                 <div className="hidden md:block md:w-1/2" />
                 <div className="pl-10 md:pl-0 md:w-1/2">
                   <span className="text-sm font-mono text-primary/70">
-                    {step.number}
+                    {numbers[i]}
                   </span>
                   <h3 className="font-display text-xl font-semibold text-text-primary mt-1">
                     {step.title}

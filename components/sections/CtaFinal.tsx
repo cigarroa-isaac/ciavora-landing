@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer, defaultTransition, viewportConfig } from "@/lib/animations";
 import { CheckCircle2, AlertCircle } from "lucide-react";
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbxUWFQnv6EDN9GUC_cvHipniY8MF-HfxOUDD3FdzbKeuoVxN6iyGBWH5TQ_hjQCWSrFCw/exec";
 
@@ -14,6 +15,7 @@ type FieldErrors = {
 };
 
 export default function CtaFinal() {
+  const t = useT();
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,13 +25,13 @@ export default function CtaFinal() {
   const validate = (): boolean => {
     const newErrors: FieldErrors = {};
 
-    if (!name.trim()) newErrors.name = "Requerido";
+    if (!name.trim()) newErrors.name = t.cta.errors.required;
     if (!email.trim()) {
-      newErrors.email = "Requerido";
+      newErrors.email = t.cta.errors.required;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Formato inválido";
+      newErrors.email = t.cta.errors.invalidEmail;
     }
-    if (!message.trim()) newErrors.message = "Requerido";
+    if (!message.trim()) newErrors.message = t.cta.errors.required;
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -108,8 +110,9 @@ export default function CtaFinal() {
               variants={fadeInUp}
               transition={defaultTransition}
             >
-              ¿Listo para dejar de operar en{" "}
-              <span className="text-primary">Excel</span>?
+              {t.cta.headingPart1}{" "}
+              <span className="text-primary">{t.cta.headingHighlight}</span>
+              {t.cta.headingPart2}
             </motion.h2>
 
             <motion.div
@@ -125,7 +128,7 @@ export default function CtaFinal() {
               variants={fadeInUp}
               transition={defaultTransition}
             >
-              Cuéntanos sobre tu proyecto y te respondemos en menos de 24 horas.
+              {t.cta.subtitle}
             </motion.p>
           </div>
 
@@ -149,16 +152,16 @@ export default function CtaFinal() {
                     <CheckCircle2 className="w-8 h-8 text-primary" />
                   </motion.div>
                   <h3 className="font-display text-xl font-semibold text-text-primary">
-                    Mensaje enviado
+                    {t.cta.success.title}
                   </h3>
                   <p className="text-text-muted text-sm">
-                    Te respondemos en menos de 24 horas.
+                    {t.cta.success.body}
                   </p>
                   <button
                     onClick={() => setStatus("idle")}
                     className="text-primary text-sm hover:underline mt-2"
                   >
-                    Enviar otro mensaje
+                    {t.cta.success.reset}
                   </button>
                 </motion.div>
               ) : (
@@ -170,11 +173,10 @@ export default function CtaFinal() {
                   className="flex flex-col gap-5"
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    {/* Name */}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <label className="text-[11px] uppercase tracking-[0.12em] text-text-muted">
-                          Nombre
+                          {t.cta.labels.name}
                         </label>
                         <AnimatePresence>
                           {errors.name && (
@@ -195,16 +197,15 @@ export default function CtaFinal() {
                         type="text"
                         value={name}
                         onChange={(e) => { setName(e.target.value); clearError("name"); }}
-                        placeholder="Tu nombre"
+                        placeholder={t.cta.placeholders.name}
                         className={errors.name ? inputError : inputNormal}
                       />
                     </div>
 
-                    {/* Email */}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <label className="text-[11px] uppercase tracking-[0.12em] text-text-muted">
-                          Email
+                          {t.cta.labels.email}
                         </label>
                         <AnimatePresence>
                           {errors.email && (
@@ -225,17 +226,16 @@ export default function CtaFinal() {
                         type="email"
                         value={email}
                         onChange={(e) => { setEmail(e.target.value); clearError("email"); }}
-                        placeholder="tu@empresa.com"
+                        placeholder={t.cta.placeholders.email}
                         className={errors.email ? inputError : inputNormal}
                       />
                     </div>
                   </div>
 
-                  {/* Message */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-[11px] uppercase tracking-[0.12em] text-text-muted">
-                        Tu reto
+                        {t.cta.labels.message}
                       </label>
                       <AnimatePresence>
                         {errors.message && (
@@ -255,7 +255,7 @@ export default function CtaFinal() {
                     <textarea
                       value={message}
                       onChange={(e) => { setMessage(e.target.value); clearError("message"); }}
-                      placeholder="¿Qué operas hoy manualmente?"
+                      placeholder={t.cta.placeholders.message}
                       rows={4}
                       className={`${errors.message ? inputError : inputNormal} resize-none`}
                     />
@@ -267,7 +267,7 @@ export default function CtaFinal() {
                     disabled={status === "sending"}
                     className="btn-press shimmer self-start px-8 py-3.5 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all text-sm shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {status === "sending" ? "Enviando..." : status === "error" ? "Error, intenta de nuevo" : "Enviar mensaje"}
+                    {status === "sending" ? t.cta.buttons.sending : status === "error" ? t.cta.buttons.error : t.cta.buttons.idle}
                   </button>
                 </motion.div>
               )}

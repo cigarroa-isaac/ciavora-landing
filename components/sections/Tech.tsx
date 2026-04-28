@@ -2,19 +2,12 @@
 
 import { motion } from "framer-motion";
 import { fadeIn, defaultTransition, viewportConfig } from "@/lib/animations";
-
-const techNames = [
-  "LLMs",
-  "Asistentes de código",
-  "Automatización",
-  "Cloud nativo",
-  "CI/CD inteligente",
-];
-
-// Duplicate for seamless loop
-const marqueeItems = [...techNames, ...techNames];
+import { useT } from "@/lib/i18n/LocaleProvider";
 
 export default function Tech() {
+  const t = useT();
+  const marqueeItems = [...t.tech.names, ...t.tech.names];
+
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <motion.div
@@ -26,10 +19,9 @@ export default function Tech() {
         transition={defaultTransition}
       >
         <p className="text-sm uppercase tracking-widest text-text-muted mb-10 text-center">
-          Velocidad posible gracias a
+          {t.tech.eyebrow}
         </p>
 
-        {/* Marquee */}
         <div className="relative mb-10">
           <div className="overflow-hidden">
             <div className="animate-marquee flex whitespace-nowrap">
@@ -47,9 +39,7 @@ export default function Tech() {
         </div>
 
         <p className="text-text-muted max-w-2xl mx-auto text-sm leading-relaxed text-center">
-          Usamos inteligencia artificial como acelerador, no como reemplazo. La
-          IA no sustituye el criterio de un equipo experimentado — lo amplifica
-          para entregar más rápido sin sacrificar calidad.
+          {t.tech.body}
         </p>
       </motion.div>
     </section>

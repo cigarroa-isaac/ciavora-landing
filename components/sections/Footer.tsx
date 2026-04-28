@@ -1,4 +1,10 @@
+"use client";
+
+import { useT } from "@/lib/i18n/LocaleProvider";
+
 export default function Footer() {
+  const t = useT();
+
   return (
     <footer className="bg-surface overflow-hidden">
       <div className="accent-gradient" />
@@ -16,29 +22,28 @@ export default function Footer() {
               CIAVORA
             </span>
             <p className="text-text-muted text-sm mt-1">
-              De idea a operación. En semanas.
+              {t.footer.tagline}
             </p>
             <p className="text-text-muted/50 text-xs mt-2">
-              Monterrey, México
+              {t.footer.location}
             </p>
           </div>
 
           <div className="flex items-center gap-6 text-[11px] uppercase tracking-[0.1em] text-text-muted">
             <a href="#" className="hover-line hover:text-text-primary transition-colors">
-              Privacidad
+              {t.footer.links.privacy}
             </a>
             <a href="#" className="hover-line hover:text-text-primary transition-colors">
-              Términos
+              {t.footer.links.terms}
             </a>
             <a href="#" className="hover-line hover:text-text-primary transition-colors">
-              Contacto
+              {t.footer.links.contact}
             </a>
           </div>
         </div>
 
         <div className="mt-8 pt-8 border-t border-border text-center text-xs text-text-muted">
-          &copy; {new Date().getFullYear()} Ciavora. Todos los derechos
-          reservados.
+          {t.footer.copyright(new Date().getFullYear())}
         </div>
       </div>
     </footer>
