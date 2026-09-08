@@ -39,6 +39,11 @@ next-env.d.ts
 *.png
 *.jpeg
 
+# ...pero los assets SEO/branding sí van al repo
+!public/*.png
+!app/icon.png
+!app/apple-icon.png
+
 # playwright
 .playwright-mcp/
 
