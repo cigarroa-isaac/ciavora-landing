@@ -22,9 +22,15 @@ export const dictionary = {
         "Construimos el sistema exacto que tu negocio necesita — porque conocemos tu industria antes de escribir la primera línea de código.",
       ctaPrimary: "Platícanos tu reto",
       ctaSecondary: "Ver cómo trabajamos",
+      terminal: {
+        file: "bitacora.log",
+        prompt: "ciavora --nuevo-sistema",
+        done: "sistema en producción",
+      },
     },
 
     valueProp: {
+      eyebrow: "Servicios",
       heading: "Lo que nos hace diferentes",
       cards: [
         {
@@ -46,6 +52,7 @@ export const dictionary = {
     },
 
     differentiator: {
+      eyebrow: "Nuestra postura",
       quote:
         "No tienes que llegar con la respuesta. Llegas con el reto, y juntos construimos la solución.",
       body:
@@ -53,6 +60,7 @@ export const dictionary = {
     },
 
     speed: {
+      eyebrow: "Velocidad",
       milestones: [
         { label: "Descubrimiento", week: "Sem 1" },
         { label: "Diseño", week: "Sem 2" },
@@ -68,6 +76,7 @@ export const dictionary = {
     },
 
     industries: {
+      eyebrow: "Industrias",
       heading: "Industrias que ya transformamos",
       cta: "¿No ves tu industria? La siguiente puede ser la tuya.",
       items: [
@@ -98,6 +107,7 @@ export const dictionary = {
     },
 
     process: {
+      eyebrow: "Proceso",
       heading: "Así trabajamos",
       subheading:
         "Cuatro pasos. Cero sorpresas. Transparencia total de principio a fin.",
@@ -139,6 +149,7 @@ export const dictionary = {
     },
 
     cta: {
+      eyebrow: "Contacto",
       headingPart1: "¿Listo para dejar de operar en",
       headingHighlight: "Excel",
       headingPart2: "?",
@@ -167,6 +178,12 @@ export const dictionary = {
         title: "Mensaje enviado",
         body: "Te respondemos en menos de 24 horas.",
         reset: "Enviar otro mensaje",
+      },
+      formFile: "contacto.form",
+      terminal: {
+        prompt: "ciavora --contacto",
+        sent: "mensaje enviado",
+        reply: "respuesta en menos de 24 h",
       },
     },
 
@@ -210,9 +227,15 @@ export const dictionary = {
         "We build the exact system your business needs — because we understand your industry before writing a single line of code.",
       ctaPrimary: "Tell us your challenge",
       ctaSecondary: "See how we work",
+      terminal: {
+        file: "build.log",
+        prompt: "ciavora --new-system",
+        done: "system live in production",
+      },
     },
 
     valueProp: {
+      eyebrow: "Services",
       heading: "What sets us apart",
       cards: [
         {
@@ -234,6 +257,7 @@ export const dictionary = {
     },
 
     differentiator: {
+      eyebrow: "Our stance",
       quote:
         "You don't have to arrive with the answer. Arrive with the challenge, and we build the solution together.",
       body:
@@ -241,6 +265,7 @@ export const dictionary = {
     },
 
     speed: {
+      eyebrow: "Speed",
       milestones: [
         { label: "Discovery", week: "Wk 1" },
         { label: "Design", week: "Wk 2" },
@@ -256,6 +281,7 @@ export const dictionary = {
     },
 
     industries: {
+      eyebrow: "Industries",
       heading: "Industries we've already transformed",
       cta: "Don't see your industry? Yours could be next.",
       items: [
@@ -286,6 +312,7 @@ export const dictionary = {
     },
 
     process: {
+      eyebrow: "Process",
       heading: "How we work",
       subheading:
         "Four steps. Zero surprises. Total transparency from start to finish.",
@@ -327,6 +354,7 @@ export const dictionary = {
     },
 
     cta: {
+      eyebrow: "Contact",
       headingPart1: "Ready to stop running everything in",
       headingHighlight: "Excel",
       headingPart2: "?",
@@ -355,6 +383,12 @@ export const dictionary = {
         title: "Message sent",
         body: "We'll get back to you in under 24 hours.",
         reset: "Send another message",
+      },
+      formFile: "contact.form",
+      terminal: {
+        prompt: "ciavora --contact",
+        sent: "message sent",
+        reply: "reply within 24 hours",
       },
     },
 

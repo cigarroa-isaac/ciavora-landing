@@ -1,26 +1,32 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Fraunces, Instrument_Sans, Fragment_Mono } from "next/font/google";
 import "./globals.css";
 import LocaleBootstrap from "@/components/LocaleBootstrap";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 
-const inter = Inter({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
 });
 
-const syne = Syne({
+const instrument = Instrument_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-syne",
+  weight: ["400", "500", "600"],
+  variable: "--font-instrument",
+});
+
+const fragmentMono = Fragment_Mono({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
-  title:
-    "Ciavora | Software a medida que acelera tu negocio · Custom software that accelerates your business",
+  title: "Ciavora — Software a medida, en semanas",
   description:
-    "Desarrollo de software personalizado para empresas que necesitan velocidad, calidad y resultados medibles. Custom software development for businesses that need speed, quality, and measurable results.",
+    "Desarrollo de software personalizado para empresas que necesitan velocidad, calidad y resultados medibles. Monterrey, México.",
 };
 
 export default function RootLayout({
@@ -29,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning className={`${inter.variable} ${syne.variable}`}>
+    <html lang="es" suppressHydrationWarning className={`${fraunces.variable} ${instrument.variable} ${fragmentMono.variable}`}>
       <head>
         <LocaleBootstrap />
       </head>

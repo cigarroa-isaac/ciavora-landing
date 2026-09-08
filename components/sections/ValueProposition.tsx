@@ -1,78 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Lightbulb, Zap, Users } from "lucide-react";
 import {
   fadeInUp,
-  scaleRotateIn,
-  staggerContainerSlow,
+  staggerContainer,
   defaultTransition,
   viewportConfig,
 } from "@/lib/animations";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
-const icons = [Lightbulb, Zap, Users];
 const numbers = ["01", "02", "03"];
 
 export default function ValueProposition() {
   const t = useT();
 
   return (
-    <section id="servicios" className="py-32 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <motion.h2
-          className="font-display text-3xl md:text-5xl font-bold text-center mb-4 section-heading text-gradient-subtle"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          variants={fadeInUp}
-          transition={defaultTransition}
-        >
-          {t.valueProp.heading}
-        </motion.h2>
+    <section id="servicios" className="px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <div className="max-w-6xl mx-auto md:grid md:grid-cols-12 md:gap-12">
+        <div className="md:col-span-4">
+          <p className="eyebrow">01 — {t.valueProp.eyebrow}</p>
+          <h2 className="font-display text-3xl md:text-[2.6rem] leading-[1.12] font-medium text-ink mt-4">
+            {t.valueProp.heading}
+          </h2>
+        </div>
 
         <motion.div
-          className="flex justify-center mb-16"
+          className="md:col-span-8 mt-12 md:mt-0"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          variants={fadeInUp}
-          transition={{ ...defaultTransition, delay: 0.1 }}
+          variants={staggerContainer}
         >
-          <div className="w-16 accent-gradient" />
-        </motion.div>
-
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          variants={staggerContainerSlow}
-        >
-          {t.valueProp.cards.map((card, i) => {
-            const Icon = icons[i];
-            return (
-              <motion.div
-                key={i}
-                className="card-lift group bg-white/[0.04] border border-white/[0.1] rounded-2xl p-8 hover:bg-white/[0.07] hover:border-primary/30"
-                variants={scaleRotateIn}
-                transition={defaultTransition}
-              >
-                <div className="flex items-center justify-between mb-5">
-                  <Icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
-                  <span className="font-display text-xs text-primary/40 font-semibold tracking-wider">
-                    {numbers[i]}
-                  </span>
-                </div>
-                <h3 className="font-display text-xl font-semibold mb-3 text-text-primary group-hover:text-primary transition-colors duration-300">
+          {t.valueProp.cards.map((card, i) => (
+            <motion.div
+              key={i}
+              className={`border-t border-line py-8 md:grid md:grid-cols-12 md:gap-6 ${
+                i === t.valueProp.cards.length - 1 ? "border-b border-line" : ""
+              }`}
+              variants={fadeInUp}
+              transition={defaultTransition}
+            >
+              <span className="md:col-span-2 font-mono text-sm text-muted pt-2">
+                {numbers[i]}
+              </span>
+              <div className="md:col-span-10">
+                <h3 className="font-display text-2xl font-medium text-ink">
                   {card.title}
                 </h3>
-                <p className="text-text-muted text-sm leading-relaxed">
+                <p className="mt-3 text-muted leading-relaxed">
                   {card.description}
                 </p>
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

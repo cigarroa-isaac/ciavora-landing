@@ -27,13 +27,13 @@ export default function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border"
+          ? "bg-background/85 backdrop-blur-md border-b border-line"
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#" className="font-display text-lg font-bold tracking-[0.12em] text-text-primary">
-          CIAVORA
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#" className="font-display text-xl font-semibold text-ink">
+          Ciavora
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -41,7 +41,7 @@ export default function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="hover-line text-[13px] uppercase tracking-[0.06em] text-text-muted hover:text-text-primary transition-colors"
+              className="text-sm text-muted hover:text-ink transition-colors"
             >
               {link.label}
             </a>
@@ -52,14 +52,14 @@ export default function Nav() {
           <LocaleToggle />
           <a
             href="#contacto"
-            className="inline-flex items-center px-5 py-2 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(124,58,237,0.25)] hover:shadow-[0_0_30px_rgba(124,58,237,0.4)]"
+            className="bg-ink text-background rounded-md px-4 py-2 text-sm font-medium hover:bg-primary transition-colors"
           >
             {t.nav.cta}
           </a>
         </div>
 
         <button
-          className="md:hidden text-text-primary"
+          className="md:hidden text-ink"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? t.nav.menuClose : t.nav.menuOpen}
           aria-expanded={mobileOpen}
@@ -75,22 +75,22 @@ export default function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-lg border-b border-border"
+            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-md border-b border-line"
           >
             <div className="px-4 py-6 flex flex-col gap-4">
               {links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-base text-text-muted hover:text-text-primary transition-colors"
+                  className="text-base text-muted hover:text-ink transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
 
-              <div className="pt-4 mt-2 border-t border-white/[0.06] flex items-center justify-between">
-                <span className="text-[11px] uppercase tracking-[0.12em] text-text-muted/60">
+              <div className="pt-4 mt-2 border-t border-line flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-muted">
                   {t.nav.localeAria}
                 </span>
                 <LocaleToggle />
@@ -98,7 +98,7 @@ export default function Nav() {
 
               <a
                 href="#contacto"
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors mt-2"
+                className="inline-flex items-center justify-center bg-ink text-background rounded-md px-4 py-2.5 text-sm font-medium hover:bg-primary transition-colors mt-2"
                 onClick={() => setMobileOpen(false)}
               >
                 {t.nav.cta}

@@ -7,7 +7,7 @@ export default function LocaleToggle({ className = "" }: { className?: string })
 
   return (
     <div
-      className={`inline-flex items-center text-[12px] uppercase tracking-[0.12em] font-medium select-none ${className}`}
+      className={`inline-flex items-center font-mono text-[12px] uppercase tracking-[0.08em] select-none ${className}`}
       aria-label={t.nav.localeAria}
     >
       <button
@@ -15,18 +15,18 @@ export default function LocaleToggle({ className = "" }: { className?: string })
         onClick={() => setLocale("es")}
         aria-pressed={locale === "es"}
         className={`px-2 py-1 transition-colors ${
-          locale === "es" ? "text-text-primary" : "text-text-muted hover:text-text-primary/70"
+          locale === "es" ? "text-ink" : "text-muted hover:text-ink/70"
         }`}
       >
         ES
       </button>
-      <span className="text-text-muted/40 mx-0.5">/</span>
+      <span className="text-muted/40 mx-0.5">/</span>
       <button
         type="button"
         onClick={() => setLocale("en")}
         aria-pressed={locale === "en"}
         className={`px-2 py-1 transition-colors ${
-          locale === "en" ? "text-text-primary" : "text-text-muted hover:text-text-primary/70"
+          locale === "en" ? "text-ink" : "text-muted hover:text-ink/70"
         }`}
       >
         EN

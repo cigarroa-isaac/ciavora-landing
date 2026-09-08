@@ -1,38 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeInScale, defaultTransition, viewportConfig } from "@/lib/animations";
+import { fadeInUp, staggerContainer, defaultTransition, viewportConfig } from "@/lib/animations";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
 export default function Differentiator() {
   const t = useT();
 
   return (
-    <section className="bg-surface py-32 md:py-40 px-4 sm:px-6 lg:px-8">
+    <section className="px-4 sm:px-6 lg:px-8 py-24 md:py-32">
       <motion.div
-        className="max-w-3xl mx-auto text-center relative"
+        className="max-w-3xl mx-auto text-center"
         initial="hidden"
         whileInView="visible"
         viewport={viewportConfig}
-        variants={fadeInScale}
-        transition={{ ...defaultTransition, duration: 0.8 }}
+        variants={staggerContainer}
       >
-        <span
-          className="absolute -top-8 left-1/2 -translate-x-1/2 text-[8rem] leading-none font-serif text-primary/[0.08] select-none pointer-events-none"
-          aria-hidden="true"
-        >
-          &ldquo;
-        </span>
+        <motion.p className="eyebrow" variants={fadeInUp} transition={defaultTransition}>
+          {t.differentiator.eyebrow}
+        </motion.p>
 
-        <blockquote className="relative z-10">
-          <p className="font-display text-2xl md:text-4xl font-medium leading-snug text-text-primary italic heading-glow">
-            {t.differentiator.quote}
+        <motion.blockquote className="mt-8" variants={fadeInUp} transition={defaultTransition}>
+          <p className="font-display italic text-2xl md:text-[2.4rem] leading-[1.3] text-ink">
+            “{t.differentiator.quote}”
           </p>
-        </blockquote>
+        </motion.blockquote>
 
-        <p className="mt-8 text-text-muted max-w-xl mx-auto leading-relaxed">
+        <motion.p
+          className="mt-8 text-muted leading-relaxed"
+          variants={fadeInUp}
+          transition={defaultTransition}
+        >
           {t.differentiator.body}
-        </p>
+        </motion.p>
       </motion.div>
     </section>
   );

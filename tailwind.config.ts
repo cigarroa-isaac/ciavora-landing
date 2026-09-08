@@ -9,17 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0A0A0F",
-        surface: "#111118",
-        primary: "#7C3AED",
-        secondary: "#06B6D4",
-        "text-primary": "#F8F8FF",
-        "text-muted": "#6B7280",
-        border: "rgba(255,255,255,0.08)",
+        background: "#F6F3EC",      // papel marfil
+        surface: "#FBF9F4",         // superficie elevada
+        ink: "#181410",             // texto principal y bloques invertidos
+        muted: "#655E52",           // texto secundario cálido (5.8:1 sobre papel)
+        primary: "#4B2FCB",         // violeta profundo — ÚNICO acento
+        "primary-soft": "#B4A3FF",  // acento sobre fondo ink
+        line: "rgba(24,20,16,0.14)",// hairlines
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-syne)", "system-ui", "sans-serif"],
+        sans: ["var(--font-instrument)", "system-ui", "sans-serif"],
+        display: ["var(--font-fraunces)", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
     },
   },

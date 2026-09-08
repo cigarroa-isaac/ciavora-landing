@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer, defaultTransition, viewportConfig } from "@/lib/animations";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import { useT } from "@/lib/i18n/LocaleProvider";
 
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbxUWFQnv6EDN9GUC_cvHipniY8MF-HfxOUDD3FdzbKeuoVxN6iyGBWH5TQ_hjQCWSrFCw/exec";
@@ -79,25 +79,14 @@ export default function CtaFinal() {
   };
 
   const inputBase =
-    "input-premium w-full bg-white/[0.05] rounded-lg px-4 py-3 text-text-primary placeholder:text-text-muted/50 text-sm outline-none transition-all duration-300";
-  const inputNormal = `${inputBase} border border-white/[0.1] focus:border-primary focus:ring-1 focus:ring-primary`;
-  const inputError = `${inputBase} border border-primary/60 ring-1 ring-primary/30 shadow-[0_0_15px_rgba(124,58,237,0.15)]`;
+    "w-full bg-transparent border-0 border-b rounded-none px-0 py-3 text-background placeholder:text-background/30 font-mono text-[13px] focus:outline-none focus:ring-0 transition-colors";
+  const inputNormal = `${inputBase} border-white/[0.18] focus:border-primary-soft`;
+  const inputError = `${inputBase} border-red-300/70`;
 
   return (
-    <section
-      id="contacto"
-      className="relative py-32 md:py-40 px-4 sm:px-6 lg:px-8 overflow-hidden"
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, transparent 50%, rgba(6,182,212,0.06) 100%)",
-        }}
-      />
-
+    <section id="contacto" className="bg-ink text-background py-24 md:py-32 px-4 sm:px-6 lg:px-8">
       <motion.div
-        className="relative z-10 max-w-6xl mx-auto"
+        className="max-w-6xl mx-auto"
         initial="hidden"
         whileInView="visible"
         viewport={viewportConfig}
@@ -105,26 +94,22 @@ export default function CtaFinal() {
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
           <div>
+            <motion.p className="eyebrow-invert" variants={fadeInUp} transition={defaultTransition}>
+              05 — {t.cta.eyebrow}
+            </motion.p>
+
             <motion.h2
-              className="font-display text-3xl md:text-5xl font-bold mb-4 section-heading text-gradient-subtle leading-tight"
+              className="font-display text-4xl md:text-5xl font-medium leading-[1.1] mt-6"
               variants={fadeInUp}
               transition={defaultTransition}
             >
               {t.cta.headingPart1}{" "}
-              <span className="text-primary">{t.cta.headingHighlight}</span>
+              <em className="italic text-primary-soft">{t.cta.headingHighlight}</em>
               {t.cta.headingPart2}
             </motion.h2>
 
-            <motion.div
-              className="my-6"
-              variants={fadeInUp}
-              transition={defaultTransition}
-            >
-              <div className="w-16 accent-gradient" />
-            </motion.div>
-
             <motion.p
-              className="text-text-muted mt-6"
+              className="mt-6 text-background/60 max-w-md leading-relaxed"
               variants={fadeInUp}
               transition={defaultTransition}
             >
@@ -137,32 +122,41 @@ export default function CtaFinal() {
               {status === "sent" ? (
                 <motion.div
                   key="success"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center justify-center text-center gap-4 py-12"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="py-10 font-mono text-[14px] leading-relaxed"
                 >
-                  <motion.div
-                    className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.15, type: "spring", stiffness: 200, damping: 12 }}
+                  <p className="text-background/50">$ {t.cta.terminal.prompt}</p>
+                  <motion.p
+                    className="mt-3 text-background"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4, duration: 0.3 }}
                   >
-                    <CheckCircle2 className="w-8 h-8 text-primary" />
-                  </motion.div>
-                  <h3 className="font-display text-xl font-semibold text-text-primary">
-                    {t.cta.success.title}
-                  </h3>
-                  <p className="text-text-muted text-sm">
-                    {t.cta.success.body}
-                  </p>
-                  <button
+                    <span className="text-primary-soft">✓ </span>
+                    {t.cta.terminal.sent}
+                  </motion.p>
+                  <motion.p
+                    className="mt-1 text-background/70"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8, duration: 0.3 }}
+                  >
+                    {"→ "}
+                    {t.cta.terminal.reply}
+                    <span className="caret" aria-hidden="true" />
+                  </motion.p>
+                  <motion.button
                     onClick={() => setStatus("idle")}
-                    className="text-primary text-sm hover:underline mt-2"
+                    className="mt-8 font-mono text-[13px] text-primary-soft hover:underline"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.2, duration: 0.3 }}
                   >
                     {t.cta.success.reset}
-                  </button>
+                  </motion.button>
                 </motion.div>
               ) : (
                 <motion.div
@@ -172,10 +166,15 @@ export default function CtaFinal() {
                   exit={{ opacity: 0 }}
                   className="flex flex-col gap-5"
                 >
+                  <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 font-mono text-[11px] text-background/40">
+                    <span>{t.cta.formFile}</span>
+                    <span>&lt; 24h</span>
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <label className="text-[11px] uppercase tracking-[0.12em] text-text-muted">
+                        <label className="font-mono text-[11px] uppercase tracking-[0.1em] text-background/50">
                           {t.cta.labels.name}
                         </label>
                         <AnimatePresence>
@@ -185,7 +184,7 @@ export default function CtaFinal() {
                               animate={{ opacity: 1, x: 0 }}
                               exit={{ opacity: 0, x: 8 }}
                               transition={{ duration: 0.25 }}
-                              className="text-[11px] text-primary/80 flex items-center gap-1"
+                              className="text-[11px] text-red-300 flex items-center gap-1"
                             >
                               <AlertCircle className="w-3 h-3" />
                               {errors.name}
@@ -204,7 +203,7 @@ export default function CtaFinal() {
 
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <label className="text-[11px] uppercase tracking-[0.12em] text-text-muted">
+                        <label className="font-mono text-[11px] uppercase tracking-[0.1em] text-background/50">
                           {t.cta.labels.email}
                         </label>
                         <AnimatePresence>
@@ -214,7 +213,7 @@ export default function CtaFinal() {
                               animate={{ opacity: 1, x: 0 }}
                               exit={{ opacity: 0, x: 8 }}
                               transition={{ duration: 0.25 }}
-                              className="text-[11px] text-primary/80 flex items-center gap-1"
+                              className="text-[11px] text-red-300 flex items-center gap-1"
                             >
                               <AlertCircle className="w-3 h-3" />
                               {errors.email}
@@ -234,7 +233,7 @@ export default function CtaFinal() {
 
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <label className="text-[11px] uppercase tracking-[0.12em] text-text-muted">
+                      <label className="font-mono text-[11px] uppercase tracking-[0.1em] text-background/50">
                         {t.cta.labels.message}
                       </label>
                       <AnimatePresence>
@@ -244,7 +243,7 @@ export default function CtaFinal() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 8 }}
                             transition={{ duration: 0.25 }}
-                            className="text-[11px] text-primary/80 flex items-center gap-1"
+                            className="text-[11px] text-red-300 flex items-center gap-1"
                           >
                             <AlertCircle className="w-3 h-3" />
                             {errors.message}
@@ -252,20 +251,28 @@ export default function CtaFinal() {
                         )}
                       </AnimatePresence>
                     </div>
-                    <textarea
-                      value={message}
-                      onChange={(e) => { setMessage(e.target.value); clearError("message"); }}
-                      placeholder={t.cta.placeholders.message}
-                      rows={4}
-                      className={`${errors.message ? inputError : inputNormal} resize-none`}
-                    />
+                    <div className="relative">
+                      <span
+                        className="absolute left-0 top-3 font-mono text-[13px] text-background/40 select-none pointer-events-none"
+                        aria-hidden="true"
+                      >
+                        $
+                      </span>
+                      <textarea
+                        value={message}
+                        onChange={(e) => { setMessage(e.target.value); clearError("message"); }}
+                        placeholder={t.cta.placeholders.message}
+                        rows={4}
+                        className={`${errors.message ? inputError : inputNormal} resize-none pl-5`}
+                      />
+                    </div>
                   </div>
 
                   <button
                     type="button"
                     onClick={handleSubmit}
                     disabled={status === "sending"}
-                    className="btn-press shimmer self-start px-8 py-3.5 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all text-sm shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="self-start px-7 py-3 rounded-md bg-background text-ink text-sm font-medium hover:bg-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {status === "sending" ? t.cta.buttons.sending : status === "error" ? t.cta.buttons.error : t.cta.buttons.idle}
                   </button>
