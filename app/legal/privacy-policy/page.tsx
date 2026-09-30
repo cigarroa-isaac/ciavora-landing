@@ -45,10 +45,10 @@ export default function PrivacyPolicy() {
             <h2 className={h2}>1. Identidad y domicilio del responsable</h2>
             <p className={p}>
               El responsable del tratamiento de los datos personales recabados a través de esta
-              aplicación es <span className={strong}>CIAVORA</span> (Isaac Cigarroa Antonio), con
-              domicilio en Tijuana, Baja California, México, y correo de contacto{" "}
-              <a className={link} href="mailto:isaac@ciavora.com">
-                isaac@ciavora.com
+              aplicación es <span className={strong}>CIAVORA</span>, con domicilio en Tijuana, Baja
+              California, México, y correo de contacto{" "}
+              <a className={link} href="mailto:admin@ciavora.com">
+                admin@ciavora.com
               </a>
               .
             </p>
@@ -247,8 +247,8 @@ export default function PrivacyPolicy() {
               de tus datos personales, así como a revocar tu consentimiento. Como esta es una
               herramienta laboral, muchas solicitudes se atienden a través del taller que administra
               tu cuenta. Para ejercer tus derechos o resolver dudas, escribe a{" "}
-              <a className={link} href="mailto:isaac@ciavora.com">
-                isaac@ciavora.com
+              <a className={link} href="mailto:admin@ciavora.com">
+                admin@ciavora.com
               </a>{" "}
               indicando tu solicitud y los datos que te identifican; te responderemos en los plazos
               que marca la ley.
@@ -256,8 +256,8 @@ export default function PrivacyPolicy() {
             <p className={p}>
               <span className={strong}>Eliminación de cuenta y datos:</span> puedes solicitar la
               eliminación de tu cuenta y de tus datos personales enviando un correo a{" "}
-              <a className={link} href="mailto:isaac@ciavora.com">
-                isaac@ciavora.com
+              <a className={link} href="mailto:admin@ciavora.com">
+                admin@ciavora.com
               </a>
               . Atenderemos la solicitud salvo que la conservación sea requerida por obligaciones
               legales del taller (por ejemplo, fiscales).
@@ -285,8 +285,8 @@ export default function PrivacyPolicy() {
             <h2 className={h2}>11. Contacto</h2>
             <p className={p}>
               Para cualquier asunto relacionado con este aviso o con tus datos personales:{" "}
-              <a className={link} href="mailto:isaac@ciavora.com">
-                isaac@ciavora.com
+              <a className={link} href="mailto:admin@ciavora.com">
+                admin@ciavora.com
               </a>
             </p>
           </section>
