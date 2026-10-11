@@ -37,7 +37,7 @@ export default function PrivacyPolicy() {
           </code>
           )
           <br />
-          Última actualización: 30 de septiembre de 2026
+          Última actualización: 10 de octubre de 2026
         </p>
 
         <div className="mt-14 space-y-12">
@@ -254,13 +254,18 @@ export default function PrivacyPolicy() {
               que marca la ley.
             </p>
             <p className={p}>
-              <span className={strong}>Eliminación de cuenta y datos:</span> puedes solicitar la
-              eliminación de tu cuenta y de tus datos personales enviando un correo a{" "}
+              <span className={strong}>Eliminación de datos (cuentas de uso laboral):</span> por
+              tratarse de una herramienta de trabajo, el alta y la baja de las cuentas del personal
+              las administra el taller (tu empleador). Tu cuenta está vinculada a registros
+              operativos (órdenes de trabajo) y fiscales que deben conservarse por obligación legal,
+              por lo que no se elimina de forma individual a solicitud del propio usuario; cuando
+              concluye tu relación laboral, el taller desactiva tu acceso. Para solicitudes de
+              privacidad o para ejercer tus derechos ARCO, escribe a{" "}
               <a className={link} href="mailto:admin@ciavora.com">
                 admin@ciavora.com
               </a>
-              . Atenderemos la solicitud salvo que la conservación sea requerida por obligaciones
-              legales del taller (por ejemplo, fiscales).
+              ; junto con el taller responsable atenderemos lo que proceda conforme a la ley
+              aplicable.
             </p>
           </section>
 
