@@ -9,17 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#F6F3EC",      // papel marfil
-        surface: "#FBF9F4",         // superficie elevada
-        ink: "#181410",             // texto principal y bloques invertidos
-        muted: "#655E52",           // texto secundario cálido (5.8:1 sobre papel)
-        primary: "#4B2FCB",         // violeta profundo — ÚNICO acento
-        "primary-soft": "#B4A3FF",  // acento sobre fondo ink
-        line: "rgba(24,20,16,0.14)",// hairlines
+        background: "#F4F2EE",      // arena (brand kit)
+        surface: "#FBFAF7",         // superficie elevada
+        ink: "#12223D",             // marino — texto principal y bloques invertidos
+        muted: "#4A5468",           // pizarra — texto secundario (6.8:1 sobre arena)
+        primary: "#E8603C",         // coral — ÚNICO acento (display/gráfica en claro; texto normal solo sobre marino)
+        "primary-soft": "#E8603C",  // coral sobre fondo marino (4.7:1)
+        line: "rgba(18,34,61,0.14)",// hairlines marino
       },
       fontFamily: {
-        sans: ["var(--font-instrument)", "system-ui", "sans-serif"],
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
+        sans: ["var(--font-lexend)", "system-ui", "sans-serif"],
+        display: ["var(--font-lexend)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
     },

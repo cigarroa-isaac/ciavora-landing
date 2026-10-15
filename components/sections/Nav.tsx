@@ -32,8 +32,15 @@ export default function Nav() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#" className="font-display text-xl font-semibold text-ink">
-          Ciavora
+        <a href="#" className="flex items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/ciavora-horizontal-color.svg"
+            alt="Ciavora"
+            className="h-7 w-auto"
+            width={489}
+            height={119}
+          />
         </a>
 
         <div className="hidden md:flex items-center gap-8">

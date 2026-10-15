@@ -17,7 +17,14 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
           <div>
-            <span className="font-display text-2xl font-medium">Ciavora</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/ciavora-horizontal-negativo.svg"
+              alt="Ciavora"
+              className="h-8 w-auto"
+              width={489}
+              height={119}
+            />
             <p className="text-sm text-background/50 mt-2">{t.footer.tagline}</p>
             <p className="text-sm text-background/35 mt-1">{t.footer.location}</p>
           </div>

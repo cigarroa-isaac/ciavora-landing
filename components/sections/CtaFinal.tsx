@@ -104,7 +104,7 @@ export default function CtaFinal() {
               transition={defaultTransition}
             >
               {t.cta.headingPart1}{" "}
-              <em className="italic text-primary-soft">{t.cta.headingHighlight}</em>
+              <em className="text-primary-soft">{t.cta.headingHighlight}</em>
               {t.cta.headingPart2}
             </motion.h2>
 

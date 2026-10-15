@@ -19,8 +19,15 @@ export default function PrivacyPolicy() {
     <div className="min-h-screen bg-background text-ink">
       <header className="border-b border-line">
         <div className="max-w-3xl mx-auto px-6 h-16 flex items-center">
-          <a href="/" className="font-display text-xl font-semibold text-ink">
-            Ciavora
+          <a href="/" className="flex items-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/ciavora-horizontal-color.svg"
+              alt="Ciavora"
+              className="h-7 w-auto"
+              width={489}
+              height={119}
+            />
           </a>
         </div>
       </header>
@@ -300,7 +307,14 @@ export default function PrivacyPolicy() {
 
       <footer className="bg-ink text-background border-t border-white/[0.08] mt-20">
         <div className="max-w-3xl mx-auto px-6 py-10">
-          <span className="font-display text-xl font-medium">Ciavora</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/ciavora-horizontal-negativo.svg"
+            alt="Ciavora"
+            className="h-7 w-auto"
+            width={489}
+            height={119}
+          />
           <p className="font-mono text-[11px] text-background/40 mt-4">
             © 2026 CIAVORA — Todos los derechos reservados.
           </p>

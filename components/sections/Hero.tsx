@@ -61,7 +61,7 @@ export default function Hero() {
               </a>
               <a
                 href="#proceso"
-                className="group inline-flex items-center gap-2 text-sm text-ink underline underline-offset-4 decoration-[rgba(24,20,16,0.3)] hover:decoration-ink"
+                className="group inline-flex items-center gap-2 text-sm text-ink underline underline-offset-4 decoration-[rgba(18,34,61,0.3)] hover:decoration-ink"
               >
                 {t.hero.ctaSecondary}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -82,7 +82,7 @@ export default function Hero() {
               <span className="absolute -bottom-3 -left-3 font-mono text-xs text-muted/70 select-none" aria-hidden="true">+</span>
               <span className="absolute -bottom-3 -right-3 font-mono text-xs text-muted/70 select-none" aria-hidden="true">+</span>
 
-              <div className="bg-ink rounded-lg overflow-hidden shadow-[0_32px_64px_-32px_rgba(24,20,16,0.45)]">
+              <div className="bg-ink rounded-lg overflow-hidden shadow-[0_32px_64px_-32px_rgba(18,34,61,0.45)]">
                 <div className="flex items-center justify-between px-5 py-3 border-b border-white/[0.07]">
                   <span className="font-mono text-[11px] text-background/40">
                     {t.hero.terminal.file}

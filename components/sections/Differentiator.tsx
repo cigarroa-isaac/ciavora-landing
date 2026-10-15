@@ -21,7 +21,7 @@ export default function Differentiator() {
         </motion.p>
 
         <motion.blockquote className="mt-8" variants={fadeInUp} transition={defaultTransition}>
-          <p className="font-display italic text-2xl md:text-[2.4rem] leading-[1.3] text-ink">
+          <p className="font-display font-light text-2xl md:text-[2.4rem] leading-[1.3] text-ink">
             “{t.differentiator.quote}”
           </p>
         </motion.blockquote>
